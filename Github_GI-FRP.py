@@ -158,14 +158,14 @@ def get_N_car_agent(population_pi, self_group): #1st dim: bus_already, 2nd dim: 
     return Ncar_dic
 
 def initialize_Q(v):
-    Q = np.full([N_bus_already,N_day_in_cycle[v]*N_sub_cycle[v],N_urgent,N_action], -100, dtype=float)
+    Q = np.full([N_bus_already,N_day_in_cycle[v]*N_sub_cycle[v],N_urgent,N_action], -10000, dtype=float)
     for i in range(N_bus_already):
         for j in range(N_day_in_cycle[v]*N_sub_cycle[v]):
             for k in range(N_urgent):
                 if i == 1: # already taken bus
-                    Q[i][j][k][1] = -200 # must take car
+                    Q[i][j][k][1] = -20000 # must take car
                 elif i == 0 and (j+1) % N_day_in_cycle[v] == 0: # have not taken bus and on the last day of any sub_cycle
-                    Q[i][j][k][0] = -200 # must take bus
+                    Q[i][j][k][0] = -20000 # must take bus
     return Q
 
 def generate_pi(v,car_prob):
@@ -596,5 +596,6 @@ for v in ['EV','GV']:
 total_cost = weekly_travel_cost + weekly_health_cost
 print('travel cost:', round(weekly_travel_cost,4) ,'health cost:', round(weekly_health_cost,4) ,'total cost:', round(total_cost,4))
           
+
 
 
