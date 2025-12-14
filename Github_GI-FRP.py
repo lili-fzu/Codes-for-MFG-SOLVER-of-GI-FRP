@@ -1,3 +1,9 @@
+"""
+Created on Sun Dec 14 12:08:32 2025
+
+@author: lily and Lin
+"""
+
 import numpy as np
 import copy
 import statistics
@@ -590,4 +596,5 @@ for v in ['EV','GV']:
 total_cost = weekly_travel_cost + weekly_health_cost
 print('travel cost:', round(weekly_travel_cost,4) ,'health cost:', round(weekly_health_cost,4) ,'total cost:', round(total_cost,4))
           
+
 
